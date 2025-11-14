@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useMemo } from 'react';
 import {
-  TrendingDownIcon,
+  ArrowTrendingDownIcon,
   CalendarDaysIcon,
   UsersIcon,
   CheckCircleIcon,
@@ -202,7 +202,7 @@ const KeyMetricsGrid = ({ results }: { results: CalculatorResults }) => {
     <section className="mb-12">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <MetricCard
-          icon={TrendingDownIcon}
+          icon={ArrowTrendingDownIcon}
           title="Annual Revenue Lost"
           value={formatCurrency(results.annualRevenueLost)}
           subtitle="Lost to churn each year"
