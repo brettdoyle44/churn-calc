@@ -9,7 +9,7 @@ import type { CalculatorInputs, UserInfo } from '../types';
 
 export default function CalculatorPage() {
   const navigate = useNavigate();
-  const { setCalculatorInputs, setCalculatorResults, setUserInfo, calculatorResults } = useCalculator();
+  const { setCalculatorInputs, setCalculatorResults, setUserInfo, calculatorInputs, calculatorResults } = useCalculator();
   
   const [showEmailCapture, setShowEmailCapture] = useState(false);
   const [isCalculating, setIsCalculating] = useState(false);
@@ -61,13 +61,14 @@ export default function CalculatorPage() {
 
       // Submit to HubSpot in the background (non-blocking)
       // Don't await - we don't want to block the user experience
-      submitToHubSpot({
-        email: userInfo.email,
-        company: userInfo.storeName,
-      }).catch(err => {
-        console.error('HubSpot submission failed:', err);
-        // Continue anyway - don't block user
-      });
+      if (calculatorInputs && calculatorResults) {
+        submitToHubSpot(userInfo, calculatorInputs, calculatorResults).catch(err => {
+          console.error('HubSpot submission failed:', err);
+          // Continue anyway - don't block user
+        });
+      } else {
+        console.warn('Cannot submit to HubSpot: missing calculator inputs or results');
+      }
 
       // Navigate to results page
       navigate('/results');
