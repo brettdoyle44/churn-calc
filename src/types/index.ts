@@ -69,6 +69,21 @@ export interface UserInfo {
 }
 
 /**
+ * Email capture form data
+ * Collected during the email capture step
+ */
+export interface EmailFormData {
+  /** User's first name */
+  firstName?: string;
+  /** User's last name */
+  lastName?: string;
+  /** User's email address */
+  email: string;
+  /** User's company name */
+  company?: string;
+}
+
+/**
  * AI-generated analysis and recommendations
  * Contains personalized insights based on calculator inputs
  */
