@@ -70,12 +70,16 @@ export default function CalculatorPage() {
         console.warn('Cannot submit to HubSpot: missing calculator inputs or results');
       }
 
+      // Hide the email capture modal
+      setShowEmailCapture(false);
+
       // Navigate to results page
       navigate('/results');
     } catch (error) {
       console.error('Email submission error:', error);
-      // Even if there's an error, navigate to results
+      // Even if there's an error, hide modal and navigate to results
       // The user has already filled out the form
+      setShowEmailCapture(false);
       navigate('/results');
     } finally {
       setIsSubmittingEmail(false);
@@ -118,39 +122,8 @@ export default function CalculatorPage() {
         </div>
       </div>
 
-      {/* Calculator Section */}
-      <div className="pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-            {calculationError && (
-              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-sm text-red-800">{calculationError}</p>
-              </div>
-            )}
-            <CalculatorForm 
-              onSubmit={handleCalculatorSubmit} 
-              isSubmitting={isCalculating}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Social Proof Section */}
-      <div className="pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-gray-600 font-medium mb-6">
-            Trusted by 500+ Shopify merchants
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 opacity-60">
-            <div className="text-gray-400 font-semibold text-lg">SHOPIFY</div>
-            <div className="text-gray-400 font-semibold text-lg">KLAVIYO</div>
-            <div className="text-gray-400 font-semibold text-lg">RECHARGE</div>
-          </div>
-        </div>
-      </div>
-
       {/* How It Works Section */}
-      <div className="pb-16 px-4 sm:px-6 lg:px-8">
+      <div className="pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
             How It Works
@@ -194,6 +167,23 @@ export default function CalculatorPage() {
                 Receive AI-powered recommendations to reduce churn
               </p>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Calculator Section */}
+      <div className="pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+            {calculationError && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-sm text-red-800">{calculationError}</p>
+              </div>
+            )}
+            <CalculatorForm 
+              onSubmit={handleCalculatorSubmit} 
+              isSubmitting={isCalculating}
+            />
           </div>
         </div>
       </div>

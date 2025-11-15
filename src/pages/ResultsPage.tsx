@@ -32,7 +32,6 @@ export default function ResultsPage() {
     aiAnalysis,
     setAiAnalysis,
     clearCalculator,
-    isComplete,
   } = useCalculator();
 
   // Local state for AI loading status
@@ -42,13 +41,15 @@ export default function ResultsPage() {
 
   /**
    * PROTECTION: Redirect to home if calculator data is incomplete
+   * Note: We only check for inputs, results, and userInfo - NOT aiAnalysis
+   * because aiAnalysis is generated on this page
    */
   useEffect(() => {
-    if (!isComplete) {
+    if (!calculatorInputs || !calculatorResults || !userInfo) {
       navigate('/');
       return;
     }
-  }, [isComplete, navigate]);
+  }, [calculatorInputs, calculatorResults, userInfo, navigate]);
 
   /**
    * Set page title and metadata
@@ -136,7 +137,7 @@ export default function ResultsPage() {
   };
 
   // Don't render anything if redirecting
-  if (!isComplete) {
+  if (!calculatorInputs || !calculatorResults || !userInfo) {
     return null;
   }
 
