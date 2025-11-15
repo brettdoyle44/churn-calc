@@ -47,9 +47,15 @@ const formatNumber = (num: number): string => {
 /**
  * Hook for animated count-up effect
  */
-const useCountUp = (end: number, duration: number = 2000): number => {
+const useCountUp = (end: number, shouldStart: boolean, duration: number = 2000): number => {
   const [count, setCount] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
+
+  useEffect(() => {
+    if (shouldStart && !hasStarted) {
+      setHasStarted(true);
+    }
+  }, [shouldStart, hasStarted]);
 
   useEffect(() => {
     if (!hasStarted) return;
@@ -120,13 +126,7 @@ const HeroResultSection = ({
   monthlyLoss: number;
 }) => {
   const { ref, isIntersecting } = useIntersectionObserver();
-  const animatedValue = useCountUp(annualLoss, 2500);
-
-  useEffect(() => {
-    if (isIntersecting) {
-      // Trigger count-up when section is visible
-    }
-  }, [isIntersecting]);
+  const animatedValue = useCountUp(annualLoss, isIntersecting, 2500);
 
   return (
     <section
@@ -471,35 +471,6 @@ const ComparisonSection = ({ inputs, results }: { inputs: CalculatorInputs; resu
 };
 
 /**
- * AI Analysis Placeholder Component
- */
-const AIAnalysisPlaceholder = () => {
-  const { ref, isIntersecting } = useIntersectionObserver();
-
-  return (
-    <section
-      id="ai-analysis-section"
-      ref={ref}
-      className={`bg-white rounded-xl shadow-md p-6 md:p-8 mb-12 transition-all duration-1000 ${
-        isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-      }`}
-    >
-      <div className="flex items-center justify-center space-x-3 mb-4">
-        <span className="text-4xl">🤖</span>
-        <h2 className="text-2xl font-bold text-gray-900">
-          Generating your personalized AI analysis...
-        </h2>
-      </div>
-      <div className="animate-pulse space-y-4">
-        <div className="h-4 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded w-3/4"></div>
-        <div className="h-4 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded w-full"></div>
-        <div className="h-4 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded w-5/6"></div>
-      </div>
-    </section>
-  );
-};
-
-/**
  * CTA Section Component
  */
 const CTASection = () => {
@@ -554,9 +525,6 @@ export default function ResultsDisplay({ inputs, results, userInfo }: ResultsDis
 
       {/* Comparison Section */}
       <ComparisonSection inputs={inputs} results={results} />
-
-      {/* AI Analysis Placeholder */}
-      <AIAnalysisPlaceholder />
 
       {/* CTA Section */}
       <CTASection />
