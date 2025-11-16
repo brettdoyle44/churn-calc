@@ -7,6 +7,14 @@ export default {
   theme: {
     extend: {
       colors: {
+        voyage: {
+          navy: '#0A2540',
+          ocean: '#1A5F7A',
+          seafoam: '#57C5B6',
+          coral: '#FF6B6B',
+          sunset: '#FFB347',
+          cream: '#FFF8F0',
+        },
         primary: {
           50: '#eef2ff',
           100: '#e0e7ff',
@@ -48,7 +56,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['DM Sans', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        display: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
       },
       container: {
         center: true,

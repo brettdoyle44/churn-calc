@@ -56,7 +56,7 @@ export default function ResultsPage() {
    */
   useEffect(() => {
     if (userInfo) {
-      document.title = `${userInfo.storeName} - Churn Analysis Results | ChurnGuard`;
+      document.title = `${userInfo.storeName} - Churn Analysis Results | Voyage`;
     }
   }, [userInfo]);
 
@@ -142,16 +142,15 @@ export default function ResultsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* HEADER */}
-      <header className="sticky top-0 z-50 bg-white shadow-md">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           {/* Left: Logo/Brand */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">C</span>
+            <div className="font-display font-black text-2xl text-voyage-navy">
+              voyage<span className="text-voyage-seafoam">_</span>
             </div>
-            <span className="text-xl font-bold text-gray-900">ChurnGuard</span>
           </div>
 
           {/* Center: Store Name */}
@@ -164,7 +163,7 @@ export default function ResultsPage() {
           {/* Right: Start Over Link */}
           <button
             onClick={handleStartOver}
-            className="text-indigo-600 hover:text-indigo-800 font-medium transition-colors no-print"
+            className="px-6 py-2 border-2 border-voyage-ocean text-voyage-ocean hover:bg-voyage-ocean hover:text-white font-semibold rounded-full transition-all no-print"
           >
             Start Over
           </button>
@@ -191,21 +190,21 @@ export default function ResultsPage() {
         <section ref={aiSectionRef} id="ai-analysis-section" className="mt-12">
           {/* Title */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            <h2 className="text-4xl md:text-5xl font-black text-voyage-navy mb-4">
               🤖 AI-Powered Retention Strategy
             </h2>
-            <p className="text-lg text-gray-600">
-              Personalized recommendations generated just for {userInfo?.storeName}
+            <p className="text-xl text-gray-600">
+              Personalized recommendations generated just for <span className="font-semibold text-voyage-ocean">{userInfo?.storeName}</span>
             </p>
           </div>
 
           {/* LOADING STATE */}
           {aiLoading && (
-            <div className="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-2xl p-12 animate-pulse">
+            <div className="bg-gradient-to-br from-voyage-cream via-white to-voyage-cream rounded-2xl p-12 border border-voyage-seafoam/20 animate-pulse">
               <div className="text-center space-y-6">
                 <LoadingSpinner size="lg" />
                 <div>
-                  <p className="text-xl font-semibold text-gray-900 mb-2">
+                  <p className="text-xl font-semibold text-voyage-navy mb-2">
                     Analyzing your churn situation...
                   </p>
                   <p className="text-gray-600">
@@ -244,22 +243,22 @@ export default function ResultsPage() {
                     components={{
                       // Style headers
                       h1: ({ children }) => (
-                        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 mt-0">
+                        <h1 className="text-3xl md:text-4xl font-display font-black text-voyage-navy mb-6 mt-0">
                           {children}
                         </h1>
                       ),
                       h2: ({ children }) => (
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 mt-8">
+                        <h2 className="text-2xl md:text-3xl font-display font-bold text-voyage-navy mb-4 mt-8">
                           {children}
                         </h2>
                       ),
                       h3: ({ children }) => (
-                        <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-3 mt-6">
+                        <h3 className="text-xl md:text-2xl font-display font-semibold text-voyage-navy mb-3 mt-6">
                           {children}
                         </h3>
                       ),
                       h4: ({ children }) => (
-                        <h4 className="text-lg md:text-xl font-semibold text-gray-900 mb-2 mt-4">
+                        <h4 className="text-lg md:text-xl font-display font-semibold text-voyage-navy mb-2 mt-4">
                           {children}
                         </h4>
                       ),
@@ -295,7 +294,7 @@ export default function ResultsPage() {
                       a: ({ href, children }) => (
                         <a
                           href={href}
-                          className="text-indigo-600 hover:text-indigo-800 hover:underline transition-colors"
+                          className="text-voyage-ocean hover:text-voyage-seafoam hover:underline transition-colors"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -308,13 +307,13 @@ export default function ResultsPage() {
                       ),
                       // Style blockquotes
                       blockquote: ({ children }) => (
-                        <blockquote className="border-l-4 border-indigo-500 pl-4 italic text-gray-700 my-4">
+                        <blockquote className="border-l-4 border-voyage-seafoam pl-4 italic text-gray-700 my-4 bg-voyage-cream/30 py-2">
                           {children}
                         </blockquote>
                       ),
                       // Style code blocks
                       code: ({ children }) => (
-                        <code className="bg-gray-100 text-indigo-600 px-2 py-1 rounded text-sm font-mono">
+                        <code className="bg-voyage-cream text-voyage-ocean px-2 py-1 rounded text-sm font-mono">
                           {children}
                         </code>
                       ),
@@ -338,26 +337,34 @@ export default function ResultsPage() {
 
         {/* SECTION 3: Footer CTA */}
         <section className="mt-16 mb-8">
-          <div className="bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-700 rounded-2xl p-8 md:p-12 text-center shadow-xl">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Ready to stop the revenue leak?
-            </h2>
-            <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
-              ChurnGuard automates everything in this strategy—from at-risk detection to win-back campaigns
-            </p>
-            <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
-              <button
-                onClick={() => window.open('https://churnguard.com/demo', '_blank')}
-                className="w-full md:w-auto bg-white text-indigo-600 font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-              >
-                Book a Demo
-              </button>
-              <button
-                onClick={() => window.open('https://churnguard.com/early-access', '_blank')}
-                className="w-full md:w-auto bg-transparent text-white font-semibold px-8 py-4 rounded-lg border-2 border-white hover:bg-white hover:text-indigo-600 transition-all duration-300"
-              >
-                Get Early Access
-              </button>
+          <div className="bg-gradient-to-br from-voyage-navy via-voyage-ocean to-voyage-navy rounded-2xl p-8 md:p-12 text-center shadow-xl relative overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-10 left-10 w-40 h-40 bg-voyage-seafoam rounded-full blur-3xl" />
+              <div className="absolute bottom-10 right-10 w-40 h-40 bg-voyage-coral rounded-full blur-3xl" />
+            </div>
+
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+                Ready to stop the revenue leak?
+              </h2>
+              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+                Voyage automates everything in this strategy—from at-risk detection to win-back campaigns
+              </p>
+              <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                <button
+                  onClick={() => window.open('mailto:hello@voyage.com?subject=Demo%20Request', '_blank')}
+                  className="w-full md:w-auto bg-gradient-to-r from-voyage-coral to-voyage-sunset text-white font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                >
+                  Book a Demo
+                </button>
+                <button
+                  onClick={handleStartOver}
+                  className="w-full md:w-auto bg-transparent text-white font-semibold px-8 py-4 rounded-full border-2 border-white hover:bg-white hover:text-voyage-navy transition-all duration-300"
+                >
+                  Calculate Again
+                </button>
+              </div>
             </div>
           </div>
         </section>

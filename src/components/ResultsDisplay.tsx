@@ -131,26 +131,26 @@ const HeroResultSection = ({
   return (
     <section
       ref={ref}
-      className={`relative overflow-hidden bg-gradient-to-br from-red-50 via-red-100 to-orange-50 rounded-2xl p-8 md:p-12 mb-8 transition-all duration-1000 ${
+      className={`relative overflow-hidden bg-gradient-to-br from-voyage-coral/10 via-voyage-sunset/10 to-voyage-cream rounded-2xl p-8 md:p-12 mb-8 border-2 border-voyage-coral/20 transition-all duration-1000 ${
         isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
       <div className="relative z-10 text-center">
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+        <h1 className="text-3xl md:text-5xl font-black font-display text-voyage-navy mb-6 leading-tight">
           <span className="text-gray-800">{storeName}</span>, you're losing{' '}
-          <span className="text-red-600">
+          <span className="text-voyage-coral">
             {isIntersecting ? formatCurrency(animatedValue) : '$0'}
           </span>{' '}
           per year to customer churn
         </h1>
         <p className="text-xl md:text-2xl text-gray-700">
-          That's <span className="font-semibold text-red-600">{formatCurrency(monthlyLoss)}</span>{' '}
+          That's <span className="font-bold text-voyage-coral">{formatCurrency(monthlyLoss)}</span>{' '}
           every month walking out the door
         </p>
       </div>
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-red-500 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-500 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-voyage-coral rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-voyage-sunset rounded-full filter blur-3xl"></div>
       </div>
     </section>
   );
@@ -177,17 +177,17 @@ const MetricCard = ({
   return (
     <div
       ref={ref}
-      className={`bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-500 p-6 ${
+      className={`bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 p-6 ${
         isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="flex flex-col items-center text-center">
-        <div className="bg-red-100 rounded-full p-3 mb-4">
-          <Icon className="w-8 h-8 text-red-600" />
+        <div className="bg-voyage-coral/10 rounded-full p-3 mb-4">
+          <Icon className="w-8 h-8 text-voyage-coral" />
         </div>
-        <h3 className="text-sm font-medium text-gray-600 mb-2">{title}</h3>
-        <p className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{value}</p>
+        <h3 className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wide">{title}</h3>
+        <p className="text-3xl md:text-4xl font-black font-display text-voyage-navy mb-2">{value}</p>
         <p className="text-sm text-gray-500">{subtitle}</p>
       </div>
     </div>
@@ -448,20 +448,20 @@ const ComparisonSection = ({ inputs, results }: { inputs: CalculatorInputs; resu
   return (
     <section
       ref={ref}
-      className={`bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 md:p-8 mb-12 transition-all duration-1000 ${
+      className={`bg-gradient-to-br from-voyage-cream to-white rounded-xl p-6 md:p-8 mb-12 border border-voyage-seafoam/20 transition-all duration-1000 ${
         isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+      <h2 className="text-2xl md:text-3xl font-black font-display text-voyage-navy mb-6 text-center">
         Put Your Churn Loss in Perspective
       </h2>
       <div className="space-y-4">
         {comparisons.map((comparison, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg p-4 shadow-sm flex items-start space-x-3"
+            className="bg-white rounded-lg p-4 shadow-sm border border-gray-100 flex items-start space-x-3"
           >
-            <CheckCircleIcon className="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" />
+            <CheckCircleIcon className="w-6 h-6 text-voyage-seafoam flex-shrink-0 mt-0.5" />
             <p className="text-gray-700 text-lg">{comparison.text}</p>
           </div>
         ))}
@@ -471,34 +471,10 @@ const ComparisonSection = ({ inputs, results }: { inputs: CalculatorInputs; resu
 };
 
 /**
- * CTA Section Component
+ * CTA Section Component - Removed (now in ResultsPage)
  */
 const CTASection = () => {
-  const { ref, isIntersecting } = useIntersectionObserver();
-
-  return (
-    <section
-      ref={ref}
-      className={`bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl p-8 md:p-12 text-center transition-all duration-1000 ${
-        isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-      }`}
-    >
-      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-        Ready to Stop the Bleeding?
-      </h2>
-      <p className="text-xl text-indigo-100 mb-8">
-        Let's work together to reduce your churn and protect your revenue
-      </p>
-      <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
-        <button className="w-full md:w-auto bg-white text-indigo-600 font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-          Book a Free Churn Reduction Strategy Call
-        </button>
-        <button className="w-full md:w-auto bg-transparent text-white font-semibold px-8 py-4 rounded-lg border-2 border-white hover:bg-white hover:text-indigo-600 transition-all duration-300">
-          Get Early Access to ChurnGuard (20% Off)
-        </button>
-      </div>
-    </section>
-  );
+  return null;
 };
 
 /**

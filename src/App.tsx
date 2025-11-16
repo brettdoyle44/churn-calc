@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { CalculatorProvider } from './contexts/CalculatorContext';
+import Navigation from './components/Navigation';
 import CalculatorPage from './pages/CalculatorPage';
 import ResultsPage from './pages/ResultsPage';
 
@@ -60,19 +61,29 @@ class ErrorBoundary extends React.Component<
   }
 }
 
+function AppContent() {
+  const location = useLocation();
+  const showNav = location.pathname === '/';
+
+  return (
+    <div className="min-h-screen bg-white">
+      {showNav && <Navigation />}
+      <ErrorBoundary>
+        <Routes>
+          <Route path="/" element={<CalculatorPage />} />
+          <Route path="/results" element={<ResultsPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </ErrorBoundary>
+    </div>
+  );
+}
+
 function App() {
   return (
     <CalculatorProvider>
       <BrowserRouter>
-        <div className="min-h-screen bg-gray-50">
-          <ErrorBoundary>
-            <Routes>
-              <Route path="/" element={<CalculatorPage />} />
-              <Route path="/results" element={<ResultsPage />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </ErrorBoundary>
-        </div>
+        <AppContent />
       </BrowserRouter>
     </CalculatorProvider>
   );
