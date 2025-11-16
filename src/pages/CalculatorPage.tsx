@@ -87,103 +87,120 @@ export default function CalculatorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    <div className="min-h-screen bg-white">
+      {/* Navigation */}
+      <nav className="border-b border-mercury-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-6">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-navy-900 rounded-mercury flex items-center justify-center">
+                <span className="text-white font-semibold text-lg">C</span>
+              </div>
+              <span className="text-xl font-semibold text-navy-950">ChurnGuard</span>
+            </div>
+          </div>
+        </div>
+      </nav>
+
       {/* Hero Section */}
-      <div className="pt-12 pb-8 px-4 sm:px-6 lg:px-8">
+      <div className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              How much is customer churn really costing your store?
-            </span>
+          <h1 className="text-5xl sm:text-6xl font-semibold text-navy-950 mb-6 leading-tight">
+            Calculate your customer churn impact
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Most Shopify merchants lose 60-80% of customers and don't realize it. 
-            Calculate your hidden revenue leak in 60 seconds.
+          <p className="text-xl text-navy-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Most Shopify merchants lose 60-80% of customers. Discover your hidden revenue leak in under 60 seconds.
           </p>
 
           {/* Trust Indicators */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-700">
-            <div className="flex items-center">
-              <span className="text-green-500 mr-2">✓</span>
+          <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-navy-600">
+            <div className="flex items-center space-x-2">
+              <svg className="w-5 h-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+              </svg>
               <span>Free forever</span>
             </div>
-            <div className="flex items-center">
-              <span className="text-green-500 mr-2">✓</span>
+            <div className="flex items-center space-x-2">
+              <svg className="w-5 h-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+              </svg>
               <span>No credit card</span>
             </div>
-            <div className="flex items-center">
-              <span className="text-green-500 mr-2">✓</span>
+            <div className="flex items-center space-x-2">
+              <svg className="w-5 h-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+              </svg>
               <span>Instant results</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* How It Works Section */}
-      <div className="pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            How It Works
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Step 1 */}
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full text-2xl font-bold mb-4">
-                1
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Enter your metrics
-              </h3>
-              <p className="text-gray-600">
-                Share basic info about your store's revenue and customer base
-              </p>
-            </div>
-
-            {/* Step 2 */}
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 text-purple-600 rounded-full text-2xl font-bold mb-4">
-                2
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                See your impact
-              </h3>
-              <p className="text-gray-600">
-                Discover exactly how much churn is costing your business
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-pink-100 text-pink-600 rounded-full text-2xl font-bold mb-4">
-                3
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Get your strategy
-              </h3>
-              <p className="text-gray-600">
-                Receive AI-powered recommendations to reduce churn
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Calculator Section */}
-      <div className="pb-16 px-4 sm:px-6 lg:px-8">
+      <div className="pb-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+          <div className="card-mercury">
             {calculationError && (
-              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-sm text-red-800">{calculationError}</p>
+              <div className="mb-6 p-4 bg-warning-50 border border-warning-200 rounded-mercury">
+                <p className="text-sm text-warning-800">{calculationError}</p>
               </div>
             )}
             <CalculatorForm 
               onSubmit={handleCalculatorSubmit} 
               isSubmitting={isCalculating}
             />
+          </div>
+        </div>
+      </div>
+
+      {/* How It Works Section */}
+      <div className="bg-mercury-50 py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-semibold text-center text-navy-950 mb-16">
+            How it works
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {/* Step 1 */}
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-navy-900 text-white rounded-mercury text-xl font-semibold mb-6">
+                1
+              </div>
+              <h3 className="text-lg font-semibold text-navy-950 mb-3">
+                Enter your metrics
+              </h3>
+              <p className="text-navy-600 leading-relaxed">
+                Share basic info about your store's revenue and customer base
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-navy-900 text-white rounded-mercury text-xl font-semibold mb-6">
+                2
+              </div>
+              <h3 className="text-lg font-semibold text-navy-950 mb-3">
+                See your impact
+              </h3>
+              <p className="text-navy-600 leading-relaxed">
+                Discover exactly how much churn is costing your business
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-navy-900 text-white rounded-mercury text-xl font-semibold mb-6">
+                3
+              </div>
+              <h3 className="text-lg font-semibold text-navy-950 mb-3">
+                Get your strategy
+              </h3>
+              <p className="text-navy-600 leading-relaxed">
+                Receive AI-powered recommendations to reduce churn
+              </p>
+            </div>
           </div>
         </div>
       </div>
