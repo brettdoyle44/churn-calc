@@ -142,21 +142,21 @@ export default function ResultsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-surface-subdued">
       {/* HEADER */}
-      <header className="sticky top-0 z-50 bg-white shadow-md">
+      <header className="sticky top-0 z-50 bg-surface border-b border-border">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           {/* Left: Logo/Brand */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">C</span>
+            <div className="w-8 h-8 bg-shopify-600 rounded-polaris flex items-center justify-center">
+              <span className="text-white font-semibold text-xl">C</span>
             </div>
-            <span className="text-xl font-bold text-gray-900">ChurnGuard</span>
+            <span className="text-xl font-semibold text-text">ChurnGuard</span>
           </div>
 
           {/* Center: Store Name */}
           <div className="hidden md:block text-center">
-            <h1 className="text-lg font-semibold text-gray-900">
+            <h1 className="text-lg font-semibold text-text">
               Analysis for {userInfo?.storeName}
             </h1>
           </div>
@@ -164,7 +164,7 @@ export default function ResultsPage() {
           {/* Right: Start Over Link */}
           <button
             onClick={handleStartOver}
-            className="text-indigo-600 hover:text-indigo-800 font-medium transition-colors no-print"
+            className="text-interactive hover:text-interactive-hovered font-medium transition-colors no-print"
           >
             Start Over
           </button>
@@ -172,7 +172,7 @@ export default function ResultsPage() {
 
         {/* Mobile: Store Name */}
         <div className="md:hidden px-4 pb-3">
-          <h1 className="text-base font-semibold text-gray-900 text-center">
+          <h1 className="text-base font-semibold text-text text-center">
             Analysis for {userInfo?.storeName}
           </h1>
         </div>
@@ -191,24 +191,24 @@ export default function ResultsPage() {
         <section ref={aiSectionRef} id="ai-analysis-section" className="mt-12">
           {/* Title */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            <h2 className="text-3xl md:text-4xl font-semibold text-text mb-2">
               🤖 AI-Powered Retention Strategy
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-text-subdued">
               Personalized recommendations generated just for {userInfo?.storeName}
             </p>
           </div>
 
           {/* LOADING STATE */}
           {aiLoading && (
-            <div className="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-2xl p-12 animate-pulse">
+            <div className="polaris-card p-12 animate-pulse">
               <div className="text-center space-y-6">
                 <LoadingSpinner size="lg" />
                 <div>
-                  <p className="text-xl font-semibold text-gray-900 mb-2">
+                  <p className="text-xl font-semibold text-text mb-2">
                     Analyzing your churn situation...
                   </p>
-                  <p className="text-gray-600">
+                  <p className="text-text-subdued">
                     This takes about 10-15 seconds...
                   </p>
                 </div>
@@ -221,14 +221,14 @@ export default function ResultsPage() {
             <div className="space-y-6">
               {/* Error Warning Banner (if fallback was used) */}
               {aiError && aiAnalysis.fallbackUsed && (
-                <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg">
+                <div className="polaris-banner polaris-banner-warning">
                   <div className="flex items-start">
                     <span className="text-2xl mr-3">⚠️</span>
                     <div>
-                      <h3 className="text-lg font-semibold text-yellow-800 mb-1">
+                      <h3 className="text-lg font-semibold text-warning-text mb-1">
                         AI analysis temporarily unavailable
                       </h3>
-                      <p className="text-yellow-700">
+                      <p className="text-warning-text">
                         We've generated a comprehensive analysis using our proven templates.
                         The recommendations below are still highly relevant and actionable.
                       </p>
@@ -238,34 +238,34 @@ export default function ResultsPage() {
               )}
 
               {/* Markdown Content Card */}
-              <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+              <div className="polaris-card">
                 <article className="prose prose-lg max-w-none">
                   <ReactMarkdown
                     components={{
                       // Style headers
                       h1: ({ children }) => (
-                        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 mt-0">
+                        <h1 className="text-3xl md:text-4xl font-semibold text-text mb-6 mt-0">
                           {children}
                         </h1>
                       ),
                       h2: ({ children }) => (
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 mt-8">
+                        <h2 className="text-2xl md:text-3xl font-semibold text-text mb-4 mt-8">
                           {children}
                         </h2>
                       ),
                       h3: ({ children }) => (
-                        <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-3 mt-6">
+                        <h3 className="text-xl md:text-2xl font-semibold text-text mb-3 mt-6">
                           {children}
                         </h3>
                       ),
                       h4: ({ children }) => (
-                        <h4 className="text-lg md:text-xl font-semibold text-gray-900 mb-2 mt-4">
+                        <h4 className="text-lg md:text-xl font-semibold text-text mb-2 mt-4">
                           {children}
                         </h4>
                       ),
                       // Style paragraphs
                       p: ({ children }) => (
-                        <p className="text-gray-700 leading-relaxed mb-4">
+                        <p className="text-text-subdued leading-relaxed mb-4">
                           {children}
                         </p>
                       ),
@@ -281,13 +281,13 @@ export default function ResultsPage() {
                         </ol>
                       ),
                       li: ({ children }) => (
-                        <li className="text-gray-700 leading-relaxed">
+                        <li className="text-text-subdued leading-relaxed">
                           {children}
                         </li>
                       ),
                       // Style bold text
                       strong: ({ children }) => (
-                        <strong className="font-semibold text-gray-900">
+                        <strong className="font-semibold text-text">
                           {children}
                         </strong>
                       ),
@@ -295,7 +295,7 @@ export default function ResultsPage() {
                       a: ({ href, children }) => (
                         <a
                           href={href}
-                          className="text-indigo-600 hover:text-indigo-800 hover:underline transition-colors"
+                          className="text-interactive hover:text-interactive-hovered hover:underline transition-colors"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -304,17 +304,17 @@ export default function ResultsPage() {
                       ),
                       // Style horizontal rules
                       hr: () => (
-                        <hr className="my-8 border-t-2 border-gray-200" />
+                        <hr className="my-8 border-t-2 border-border" />
                       ),
                       // Style blockquotes
                       blockquote: ({ children }) => (
-                        <blockquote className="border-l-4 border-indigo-500 pl-4 italic text-gray-700 my-4">
+                        <blockquote className="border-l-4 border-shopify-600 pl-4 italic text-text-subdued my-4">
                           {children}
                         </blockquote>
                       ),
                       // Style code blocks
                       code: ({ children }) => (
-                        <code className="bg-gray-100 text-indigo-600 px-2 py-1 rounded text-sm font-mono">
+                        <code className="bg-surface-subdued text-interactive px-2 py-1 rounded text-sm font-mono">
                           {children}
                         </code>
                       ),
@@ -325,8 +325,8 @@ export default function ResultsPage() {
                 </article>
 
                 {/* Footer: Generated date */}
-                <div className="mt-8 pt-6 border-t border-gray-200">
-                  <p className="text-sm text-gray-500 text-center">
+                <div className="mt-8 pt-6 border-t border-border">
+                  <p className="text-sm text-text-subdued text-center">
                     Generated {aiAnalysis.fallbackUsed ? 'using proven templates' : 'by AI'} on{' '}
                     {formatDate(aiAnalysis.generatedAt)}
                   </p>
@@ -338,23 +338,23 @@ export default function ResultsPage() {
 
         {/* SECTION 3: Footer CTA */}
         <section className="mt-16 mb-8">
-          <div className="bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-700 rounded-2xl p-8 md:p-12 text-center shadow-xl">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <div className="bg-shopify-600 rounded-polaris-lg p-8 md:p-12 text-center shadow-polaris">
+            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
               Ready to stop the revenue leak?
             </h2>
-            <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-shopify-100 mb-8 max-w-2xl mx-auto">
               ChurnGuard automates everything in this strategy—from at-risk detection to win-back campaigns
             </p>
             <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
               <button
                 onClick={() => window.open('https://churnguard.com/demo', '_blank')}
-                className="w-full md:w-auto bg-white text-indigo-600 font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                className="w-full md:w-auto bg-white text-shopify-700 font-medium px-8 py-4 rounded-polaris shadow-polaris hover:shadow-polaris-md transition-all duration-300"
               >
                 Book a Demo
               </button>
               <button
                 onClick={() => window.open('https://churnguard.com/early-access', '_blank')}
-                className="w-full md:w-auto bg-transparent text-white font-semibold px-8 py-4 rounded-lg border-2 border-white hover:bg-white hover:text-indigo-600 transition-all duration-300"
+                className="w-full md:w-auto bg-transparent text-white font-medium px-8 py-4 rounded-polaris border-2 border-white hover:bg-white hover:text-shopify-700 transition-all duration-300"
               >
                 Get Early Access
               </button>
@@ -376,11 +376,11 @@ export default function ResultsPage() {
           header {
             position: relative !important;
           }
-          .shadow-md,
-          .shadow-lg,
-          .shadow-xl {
+          .shadow-polaris,
+          .shadow-polaris-md,
+          .shadow-polaris-lg {
             box-shadow: none !important;
-            border: 1px solid #e5e7eb;
+            border: 1px solid #c9cccf;
           }
           button {
             display: none !important;

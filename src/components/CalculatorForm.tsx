@@ -77,12 +77,12 @@ const CalculatorForm = ({ onSubmit, isSubmitting = false }: CalculatorFormProps)
   };
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-5">
       {/* Average Order Value */}
       <div>
-        <label htmlFor="averageOrderValue" className="block text-sm font-medium text-gray-900 mb-1">
+        <label htmlFor="averageOrderValue" className="polaris-label">
           Average Order Value ($)
-          <span className="text-red-500 ml-1">*</span>
+          <span className="text-critical ml-1">*</span>
         </label>
         <Controller
           name="averageOrderValue"
@@ -106,24 +106,22 @@ const CalculatorForm = ({ onSubmit, isSubmitting = false }: CalculatorFormProps)
                 onChange(formatted);
               }}
               onBlur={onBlur}
-              className={`block w-full rounded-lg border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ${
-                errors.averageOrderValue ? 'ring-red-300' : 'ring-gray-300'
-              } placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200`}
+              className={`polaris-input ${errors.averageOrderValue ? 'polaris-input-error' : ''}`}
             />
           )}
         />
         {errors.averageOrderValue ? (
-          <p className="mt-1 text-sm text-red-600">{errors.averageOrderValue.message}</p>
+          <p className="mt-1 text-sm text-critical">{errors.averageOrderValue.message}</p>
         ) : (
-          <p className="mt-1 text-sm text-gray-500">Average amount customers spend per order</p>
+          <p className="mt-1 text-sm text-text-subdued">Average amount customers spend per order</p>
         )}
       </div>
 
       {/* Total Customers */}
       <div>
-        <label htmlFor="numberOfCustomers" className="block text-sm font-medium text-gray-900 mb-1">
+        <label htmlFor="numberOfCustomers" className="polaris-label">
           Total Customers
-          <span className="text-red-500 ml-1">*</span>
+          <span className="text-critical ml-1">*</span>
         </label>
         <Controller
           name="numberOfCustomers"
@@ -147,24 +145,22 @@ const CalculatorForm = ({ onSubmit, isSubmitting = false }: CalculatorFormProps)
                 onChange(formatted);
               }}
               onBlur={onBlur}
-              className={`block w-full rounded-lg border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ${
-                errors.numberOfCustomers ? 'ring-red-300' : 'ring-gray-300'
-              } placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200`}
+              className={`polaris-input ${errors.numberOfCustomers ? 'polaris-input-error' : ''}`}
             />
           )}
         />
         {errors.numberOfCustomers ? (
-          <p className="mt-1 text-sm text-red-600">{errors.numberOfCustomers.message}</p>
+          <p className="mt-1 text-sm text-critical">{errors.numberOfCustomers.message}</p>
         ) : (
-          <p className="mt-1 text-sm text-gray-500">Your active customer base</p>
+          <p className="mt-1 text-sm text-text-subdued">Your active customer base</p>
         )}
       </div>
 
       {/* Purchase Frequency */}
       <div>
-        <label htmlFor="purchaseFrequency" className="block text-sm font-medium text-gray-900 mb-1">
+        <label htmlFor="purchaseFrequency" className="polaris-label">
           Purchase Frequency (per year)
-          <span className="text-red-500 ml-1">*</span>
+          <span className="text-critical ml-1">*</span>
         </label>
         <Controller
           name="purchaseFrequency"
@@ -185,28 +181,26 @@ const CalculatorForm = ({ onSubmit, isSubmitting = false }: CalculatorFormProps)
               step="0.1"
               min="0.1"
               {...field}
-              className={`block w-full rounded-lg border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ${
-                errors.purchaseFrequency ? 'ring-red-300' : 'ring-gray-300'
-              } placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200`}
+              className={`polaris-input ${errors.purchaseFrequency ? 'polaris-input-error' : ''}`}
             />
           )}
         />
         {errors.purchaseFrequency ? (
-          <p className="mt-1 text-sm text-red-600">{errors.purchaseFrequency.message}</p>
+          <p className="mt-1 text-sm text-critical">{errors.purchaseFrequency.message}</p>
         ) : (
-          <p className="mt-1 text-sm text-gray-500">How many times per year customers typically buy</p>
+          <p className="mt-1 text-sm text-text-subdued">How many times per year customers typically buy</p>
         )}
       </div>
 
       {/* Current Churn Rate */}
       <div>
-        <label htmlFor="churnRate" className="flex items-center text-sm font-medium text-gray-900 mb-1">
+        <label htmlFor="churnRate" className="flex items-center polaris-label">
           Current Churn Rate (%)
           <Popover className="relative ml-1">
-            <Popover.Button className="text-gray-400 hover:text-gray-600 transition-colors">
+            <Popover.Button className="text-text-subdued hover:text-text transition-colors">
               <InformationCircleIcon className="h-5 w-5" />
             </Popover.Button>
-            <Popover.Panel className="absolute z-10 w-64 px-4 py-3 mt-2 text-sm bg-gray-900 text-white rounded-lg shadow-lg">
+            <Popover.Panel className="absolute z-10 w-64 px-4 py-3 mt-2 text-sm bg-text text-white rounded-polaris shadow-polaris-lg">
               Most Shopify stores see 60-80% churn
             </Popover.Panel>
           </Popover>
@@ -230,27 +224,25 @@ const CalculatorForm = ({ onSubmit, isSubmitting = false }: CalculatorFormProps)
               min="0"
               max="100"
               {...field}
-              className={`block w-full rounded-lg border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ${
-                errors.churnRate ? 'ring-red-300' : 'ring-gray-300'
-              } placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200`}
+              className={`polaris-input ${errors.churnRate ? 'polaris-input-error' : ''}`}
             />
           )}
         />
         {errors.churnRate ? (
-          <p className="mt-1 text-sm text-red-600">{errors.churnRate.message}</p>
+          <p className="mt-1 text-sm text-critical">{errors.churnRate.message}</p>
         ) : (
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-text-subdued">
             What % of customers don't return? (We'll use 75% industry average if blank)
           </p>
         )}
       </div>
 
       {/* Advanced Options - Collapsible */}
-      <div className="border-t border-gray-200 pt-6">
+      <div className="border-t border-border pt-5">
         <button
           type="button"
           onClick={() => setShowAdvanced(!showAdvanced)}
-          className="flex items-center justify-between w-full text-left text-sm font-medium text-gray-900 hover:text-indigo-600 transition-colors"
+          className="flex items-center justify-between w-full text-left text-sm font-medium text-text hover:text-interactive transition-colors"
         >
           <span>Advanced Options</span>
           {showAdvanced ? (
@@ -261,10 +253,10 @@ const CalculatorForm = ({ onSubmit, isSubmitting = false }: CalculatorFormProps)
         </button>
 
         {showAdvanced && (
-          <div className="mt-6 space-y-6 animate-fadeIn">
+          <div className="mt-5 space-y-5 animate-fadeIn">
             {/* Customer Acquisition Cost */}
             <div>
-              <label htmlFor="customerAcquisitionCost" className="block text-sm font-medium text-gray-900 mb-1">
+              <label htmlFor="customerAcquisitionCost" className="polaris-label">
                 Customer Acquisition Cost ($)
               </label>
               <Controller
@@ -287,22 +279,20 @@ const CalculatorForm = ({ onSubmit, isSubmitting = false }: CalculatorFormProps)
                       onChange(formatted);
                     }}
                     onBlur={onBlur}
-                    className={`block w-full rounded-lg border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ${
-                      errors.customerAcquisitionCost ? 'ring-red-300' : 'ring-gray-300'
-                    } placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200`}
+                    className={`polaris-input ${errors.customerAcquisitionCost ? 'polaris-input-error' : ''}`}
                   />
                 )}
               />
               {errors.customerAcquisitionCost ? (
-                <p className="mt-1 text-sm text-red-600">{errors.customerAcquisitionCost.message}</p>
+                <p className="mt-1 text-sm text-critical">{errors.customerAcquisitionCost.message}</p>
               ) : (
-                <p className="mt-1 text-sm text-gray-500">Average cost to acquire one customer</p>
+                <p className="mt-1 text-sm text-text-subdued">Average cost to acquire one customer</p>
               )}
             </div>
 
             {/* Gross Margin */}
             <div>
-              <label htmlFor="grossMargin" className="block text-sm font-medium text-gray-900 mb-1">
+              <label htmlFor="grossMargin" className="polaris-label">
                 Gross Margin (%)
               </label>
               <Controller
@@ -324,16 +314,14 @@ const CalculatorForm = ({ onSubmit, isSubmitting = false }: CalculatorFormProps)
                     min="0"
                     max="100"
                     {...field}
-                    className={`block w-full rounded-lg border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ${
-                      errors.grossMargin ? 'ring-red-300' : 'ring-gray-300'
-                    } placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm transition-all duration-200`}
+                    className={`polaris-input ${errors.grossMargin ? 'polaris-input-error' : ''}`}
                   />
                 )}
               />
               {errors.grossMargin ? (
-                <p className="mt-1 text-sm text-red-600">{errors.grossMargin.message}</p>
+                <p className="mt-1 text-sm text-critical">{errors.grossMargin.message}</p>
               ) : (
-                <p className="mt-1 text-sm text-gray-500">Your profit margin on products</p>
+                <p className="mt-1 text-sm text-text-subdued">Your profit margin on products</p>
               )}
             </div>
           </div>
@@ -345,7 +333,7 @@ const CalculatorForm = ({ onSubmit, isSubmitting = false }: CalculatorFormProps)
         <button
           type="submit"
           disabled={isSubmitting || !isValid}
-          className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-indigo-600 rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105 active:scale-95"
+          className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? (
             <>

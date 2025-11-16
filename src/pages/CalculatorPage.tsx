@@ -87,35 +87,45 @@ export default function CalculatorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    <div className="min-h-screen bg-surface-subdued">
       {/* Hero Section */}
       <div className="pt-12 pb-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              How much is customer churn really costing your store?
-            </span>
+          <h1 className="text-4xl sm:text-5xl font-semibold mb-6 text-text">
+            How much is customer churn really costing your store?
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-text-subdued mb-8 max-w-3xl mx-auto">
             Most Shopify merchants lose 60-80% of customers and don't realize it. 
             Calculate your hidden revenue leak in 60 seconds.
           </p>
 
           {/* Trust Indicators */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-700">
-            <div className="flex items-center">
-              <span className="text-green-500 mr-2">✓</span>
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-text">
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-full bg-success flex items-center justify-center">
+                <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
               <span>Free forever</span>
             </div>
-            <div className="flex items-center">
-              <span className="text-green-500 mr-2">✓</span>
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-full bg-success flex items-center justify-center">
+                <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
               <span>No credit card</span>
             </div>
-            <div className="flex items-center">
-              <span className="text-green-500 mr-2">✓</span>
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-full bg-success flex items-center justify-center">
+                <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
               <span>Instant results</span>
             </div>
           </div>
@@ -125,45 +135,45 @@ export default function CalculatorPage() {
       {/* How It Works Section */}
       <div className="pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl font-semibold text-center text-text mb-12">
             How It Works
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Step 1 */}
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full text-2xl font-bold mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-shopify-100 text-shopify-700 rounded-full text-2xl font-semibold mb-4">
                 1
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <h3 className="text-xl font-semibold text-text mb-2">
                 Enter your metrics
               </h3>
-              <p className="text-gray-600">
+              <p className="text-text-subdued">
                 Share basic info about your store's revenue and customer base
               </p>
             </div>
 
             {/* Step 2 */}
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 text-purple-600 rounded-full text-2xl font-bold mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-shopify-200 text-shopify-800 rounded-full text-2xl font-semibold mb-4">
                 2
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <h3 className="text-xl font-semibold text-text mb-2">
                 See your impact
               </h3>
-              <p className="text-gray-600">
+              <p className="text-text-subdued">
                 Discover exactly how much churn is costing your business
               </p>
             </div>
 
             {/* Step 3 */}
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-pink-100 text-pink-600 rounded-full text-2xl font-bold mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-shopify-300 text-shopify-900 rounded-full text-2xl font-semibold mb-4">
                 3
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <h3 className="text-xl font-semibold text-text mb-2">
                 Get your strategy
               </h3>
-              <p className="text-gray-600">
+              <p className="text-text-subdued">
                 Receive AI-powered recommendations to reduce churn
               </p>
             </div>
@@ -174,10 +184,10 @@ export default function CalculatorPage() {
       {/* Calculator Section */}
       <div className="pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+          <div className="polaris-card">
             {calculationError && (
-              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-sm text-red-800">{calculationError}</p>
+              <div className="polaris-banner polaris-banner-critical mb-6">
+                <p className="text-sm">{calculationError}</p>
               </div>
             )}
             <CalculatorForm 

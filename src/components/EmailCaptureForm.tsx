@@ -63,10 +63,10 @@ export default function EmailCaptureForm({
       {/* Full-screen container */}
       <div className="fixed inset-0 flex items-center justify-center p-4">
         {/* Modal card */}
-        <Dialog.Panel className="mx-auto max-w-md w-full bg-white rounded-2xl shadow-2xl p-8 animate-scale-up">
+        <Dialog.Panel className="mx-auto max-w-md w-full polaris-card animate-scale-up">
           {/* Header */}
           <div className="text-center mb-6">
-            <h1 className="text-2xl font-bold text-gray-900">ChurnGuard</h1>
+            <h1 className="text-2xl font-semibold text-text">ChurnGuard</h1>
           </div>
 
           {/* Teaser Section */}
@@ -74,17 +74,17 @@ export default function EmailCaptureForm({
             <div className="mb-2">
               <span className="text-2xl">🎯</span>
             </div>
-            <h2 className="text-xl font-bold text-gray-900 mb-2">
+            <h2 className="text-xl font-semibold text-text mb-2">
               Your Churn Analysis is Ready
             </h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-text-subdued mb-4">
               You're losing approximately...
             </p>
             <div className="relative inline-block">
-              <div className="text-4xl font-bold text-red-600 blur-sm select-none">
+              <div className="text-4xl font-semibold text-critical blur-sm select-none">
                 {formatCurrency(calculatorResults.annualRevenueLost)}
               </div>
-              <div className="text-sm text-gray-600 mt-1 blur-sm select-none">
+              <div className="text-sm text-text-subdued mt-1 blur-sm select-none">
                 per year
               </div>
             </div>
@@ -92,10 +92,10 @@ export default function EmailCaptureForm({
 
           {/* Unlock Section */}
           <div className="text-center mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-text mb-2">
               Enter your details to see your complete analysis
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-text-subdued">
               Instant access to your personalized churn reduction strategy
             </p>
           </div>
@@ -108,8 +108,8 @@ export default function EmailCaptureForm({
               '90-day implementation roadmap',
               'Industry benchmarking',
             ].map((benefit, index) => (
-              <div key={index} className="flex items-center text-sm text-gray-700">
-                <CheckCircleIcon className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
+              <div key={index} className="flex items-center text-sm text-text">
+                <CheckCircleIcon className="h-5 w-5 text-success mr-2 flex-shrink-0" />
                 <span>{benefit}</span>
               </div>
             ))}
@@ -121,18 +121,16 @@ export default function EmailCaptureForm({
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="polaris-label"
               >
-                Email Address <span className="text-red-500">*</span>
+                Email Address <span className="text-critical">*</span>
               </label>
               <input
                 id="email"
                 type="email"
                 placeholder="you@yourstore.com"
                 disabled={isSubmitting}
-                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed ${
-                  errors.email ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`polaris-input ${errors.email ? 'polaris-input-error' : ''}`}
                 {...register('email', {
                   required: 'Email is required',
                   pattern: {
@@ -144,7 +142,7 @@ export default function EmailCaptureForm({
                 aria-describedby={errors.email ? 'email-error' : undefined}
               />
               {errors.email && (
-                <p id="email-error" className="mt-1 text-sm text-red-600">
+                <p id="email-error" className="mt-1 text-sm text-critical">
                   {errors.email.message}
                 </p>
               )}
@@ -154,18 +152,16 @@ export default function EmailCaptureForm({
             <div>
               <label
                 htmlFor="storeName"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="polaris-label"
               >
-                Store Name <span className="text-red-500">*</span>
+                Store Name <span className="text-critical">*</span>
               </label>
               <input
                 id="storeName"
                 type="text"
                 placeholder="My Shopify Store"
                 disabled={isSubmitting}
-                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed ${
-                  errors.storeName ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`polaris-input ${errors.storeName ? 'polaris-input-error' : ''}`}
                 {...register('storeName', {
                   required: 'Store name is required',
                   minLength: {
@@ -177,7 +173,7 @@ export default function EmailCaptureForm({
                 aria-describedby={errors.storeName ? 'storeName-error' : undefined}
               />
               {errors.storeName && (
-                <p id="storeName-error" className="mt-1 text-sm text-red-600">
+                <p id="storeName-error" className="mt-1 text-sm text-critical">
                   {errors.storeName.message}
                 </p>
               )}
@@ -187,18 +183,16 @@ export default function EmailCaptureForm({
             <div>
               <label
                 htmlFor="storeUrl"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="polaris-label"
               >
-                Shopify Store URL <span className="text-gray-400">(Optional)</span>
+                Shopify Store URL <span className="text-text-subdued">(Optional)</span>
               </label>
               <input
                 id="storeUrl"
                 type="text"
                 placeholder="mystore.myshopify.com"
                 disabled={isSubmitting}
-                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed ${
-                  errors.storeUrl ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`polaris-input ${errors.storeUrl ? 'polaris-input-error' : ''}`}
                 {...register('storeUrl', {
                   pattern: {
                     value: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
@@ -211,11 +205,11 @@ export default function EmailCaptureForm({
                 }
               />
               {errors.storeUrl ? (
-                <p id="storeUrl-error" className="mt-1 text-sm text-red-600">
+                <p id="storeUrl-error" className="mt-1 text-sm text-critical">
                   {errors.storeUrl.message}
                 </p>
               ) : (
-                <p id="storeUrl-help" className="mt-1 text-xs text-gray-500">
+                <p id="storeUrl-help" className="mt-1 text-xs text-text-subdued">
                   Optional - helps us personalize your analysis
                 </p>
               )}
@@ -225,21 +219,21 @@ export default function EmailCaptureForm({
             <div>
               <label
                 htmlFor="biggestChallenge"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="polaris-label"
               >
                 What's your biggest retention challenge?{' '}
-                <span className="text-gray-400">(Optional)</span>
+                <span className="text-text-subdued">(Optional)</span>
               </label>
               <textarea
                 id="biggestChallenge"
                 rows={3}
                 placeholder="e.g., customers only buy once..."
                 disabled={isSubmitting}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed resize-none"
+                className="polaris-input resize-none"
                 {...register('biggestChallenge')}
                 aria-describedby="biggestChallenge-help"
               />
-              <p id="biggestChallenge-help" className="mt-1 text-xs text-gray-500">
+              <p id="biggestChallenge-help" className="mt-1 text-xs text-text-subdued">
                 Optional - helps our AI give better recommendations
               </p>
             </div>
@@ -248,7 +242,7 @@ export default function EmailCaptureForm({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold text-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 flex items-center justify-center"
+              className="btn-primary w-full text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
               aria-busy={isSubmitting}
             >
               {isSubmitting ? (
@@ -284,10 +278,10 @@ export default function EmailCaptureForm({
             </button>
 
             {/* Legal Text */}
-            <p className="text-xs text-gray-500 text-center">
+            <p className="text-xs text-text-subdued text-center">
               By continuing, you agree to receive occasional retention tips and
               product updates.{' '}
-              <a href="#" className="text-blue-600 hover:underline">
+              <a href="#" className="text-interactive hover:underline">
                 Privacy Policy
               </a>
               . Unsubscribe anytime.

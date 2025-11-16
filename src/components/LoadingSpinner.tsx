@@ -46,7 +46,7 @@ export default function LoadingSpinner({
           className={`
             ${sizeClasses[size]} 
             rounded-full 
-            border-indigo-600 
+            border-shopify-600 
             border-t-transparent 
             animate-spin
           `}
@@ -55,7 +55,7 @@ export default function LoadingSpinner({
       
       {/* Optional text label */}
       {text && (
-        <p className="text-gray-600 text-sm font-medium text-center">
+        <p className="text-text-subdued text-sm font-medium text-center">
           {text}
         </p>
       )}

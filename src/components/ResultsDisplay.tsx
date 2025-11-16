@@ -131,26 +131,22 @@ const HeroResultSection = ({
   return (
     <section
       ref={ref}
-      className={`relative overflow-hidden bg-gradient-to-br from-red-50 via-red-100 to-orange-50 rounded-2xl p-8 md:p-12 mb-8 transition-all duration-1000 ${
+      className={`relative overflow-hidden bg-critical-subdued border border-critical rounded-polaris-lg p-8 md:p-12 mb-8 transition-all duration-1000 ${
         isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
       <div className="relative z-10 text-center">
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-          <span className="text-gray-800">{storeName}</span>, you're losing{' '}
-          <span className="text-red-600">
+        <h1 className="text-3xl md:text-5xl font-semibold text-text mb-6 leading-tight">
+          <span className="text-text">{storeName}</span>, you're losing{' '}
+          <span className="text-critical">
             {isIntersecting ? formatCurrency(animatedValue) : '$0'}
           </span>{' '}
           per year to customer churn
         </h1>
-        <p className="text-xl md:text-2xl text-gray-700">
-          That's <span className="font-semibold text-red-600">{formatCurrency(monthlyLoss)}</span>{' '}
+        <p className="text-xl md:text-2xl text-text-subdued">
+          That's <span className="font-semibold text-critical">{formatCurrency(monthlyLoss)}</span>{' '}
           every month walking out the door
         </p>
-      </div>
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-red-500 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-500 rounded-full filter blur-3xl"></div>
       </div>
     </section>
   );
@@ -177,18 +173,18 @@ const MetricCard = ({
   return (
     <div
       ref={ref}
-      className={`bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-500 p-6 ${
+      className={`polaris-card hover:shadow-polaris-md transition-all duration-500 ${
         isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="flex flex-col items-center text-center">
-        <div className="bg-red-100 rounded-full p-3 mb-4">
-          <Icon className="w-8 h-8 text-red-600" />
+        <div className="bg-critical-subdued rounded-full p-3 mb-4">
+          <Icon className="w-8 h-8 text-critical" />
         </div>
-        <h3 className="text-sm font-medium text-gray-600 mb-2">{title}</h3>
-        <p className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{value}</p>
-        <p className="text-sm text-gray-500">{subtitle}</p>
+        <h3 className="text-sm font-medium text-text-subdued mb-2">{title}</h3>
+        <p className="text-3xl md:text-4xl font-semibold text-text mb-2">{value}</p>
+        <p className="text-sm text-text-subdued">{subtitle}</p>
       </div>
     </div>
   );
@@ -242,14 +238,14 @@ const VisualizationSection = ({ results }: { results: CalculatorResults }) => {
   return (
     <section
       ref={ref}
-      className={`bg-white rounded-xl shadow-md p-6 md:p-8 mb-12 transition-all duration-1000 ${
+      className={`polaris-card mb-12 transition-all duration-1000 ${
         isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 text-center">
+      <h2 className="text-2xl md:text-3xl font-semibold text-text mb-2 text-center">
         Your Churn Impact Over Time
       </h2>
-      <p className="text-gray-600 text-center mb-8">
+      <p className="text-text-subdued text-center mb-8">
         See how churn compounds and erodes your revenue
       </p>
       <div className="w-full h-80">
@@ -258,11 +254,11 @@ const VisualizationSection = ({ results }: { results: CalculatorResults }) => {
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
             <XAxis
               dataKey="year"
-              stroke="#666"
+              stroke="#6d7175"
               style={{ fontSize: '14px', fontWeight: 500 }}
             />
             <YAxis
-              stroke="#666"
+              stroke="#6d7175"
               tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
               style={{ fontSize: '14px' }}
             />
@@ -270,22 +266,22 @@ const VisualizationSection = ({ results }: { results: CalculatorResults }) => {
               formatter={(value: number) => formatCurrency(value)}
               contentStyle={{
                 backgroundColor: 'white',
-                border: '1px solid #e5e7eb',
+                border: '1px solid #c9cccf',
                 borderRadius: '8px',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                boxShadow: '0 0 0 1px rgba(63,63,68,.05), 0 1px 3px 0 rgba(63,63,68,.15)',
               }}
             />
             <Bar
               dataKey="loss"
-              fill="url(#colorLoss)"
+              fill="#d72c0d"
               radius={[8, 8, 0, 0]}
               animationDuration={1500}
               animationBegin={isIntersecting ? 0 : 10000}
             />
             <defs>
               <linearGradient id="colorLoss" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#dc2626" stopOpacity={1} />
-                <stop offset="100%" stopColor="#ef4444" stopOpacity={0.8} />
+                <stop offset="0%" stopColor="#d72c0d" stopOpacity={1} />
+                <stop offset="100%" stopColor="#d72c0d" stopOpacity={0.8} />
               </linearGradient>
             </defs>
           </BarChart>
@@ -322,7 +318,7 @@ const ScenarioCard = ({
   return (
     <div
       ref={ref}
-      className={`relative bg-white rounded-xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-500 p-6 border-2 ${
+      className={`relative polaris-card hover:shadow-polaris-md transition-all duration-500 border-2 ${
         isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
       style={{
@@ -332,25 +328,25 @@ const ScenarioCard = ({
     >
       {isRecommended && (
         <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-          <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+          <span className="polaris-badge polaris-badge-success text-xs font-semibold px-3 py-1">
             RECOMMENDED
           </span>
         </div>
       )}
       <div className="text-center">
-        <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
-        <p className="text-sm text-gray-600 mb-4">
+        <h3 className="text-lg font-semibold text-text mb-2">{title}</h3>
+        <p className="text-sm text-text-subdued mb-4">
           Reduce to <span className="font-semibold">{newChurnRate.toFixed(1)}%</span> churn
         </p>
         <div className="space-y-3">
           <div>
-            <p className="text-sm text-gray-500">Annual Savings</p>
-            <p className="text-2xl font-bold" style={{ color: accentColor }}>
+            <p className="text-sm text-text-subdued">Annual Savings</p>
+            <p className="text-2xl font-semibold" style={{ color: accentColor }}>
               {formatCurrency(annualSavings)}
             </p>
           </div>
           <div>
-            <p className="text-sm text-gray-500">3-Year Savings</p>
+            <p className="text-sm text-text-subdued">3-Year Savings</p>
             <p className="text-xl font-semibold" style={{ color: accentColor }}>
               {formatCurrency(threeYearSavings)}
             </p>
@@ -370,7 +366,7 @@ const ScenariosSection = ({ results }: { results: CalculatorResults }) => {
   const scenarios = results.churnReductionScenarios;
 
   const getAccentColor = (index: number): string => {
-    const colors = ['#10b981', '#059669', '#047857'];
+    const colors = ['#008060', '#006e52', '#005a45'];
     return colors[index] || colors[0];
   };
 
@@ -382,10 +378,10 @@ const ScenariosSection = ({ results }: { results: CalculatorResults }) => {
       }`}
     >
       <div className="text-center mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+        <h2 className="text-2xl md:text-3xl font-semibold text-text mb-2">
           What if you could reduce churn?
         </h2>
-        <p className="text-gray-600">
+        <p className="text-text-subdued">
           See how much you could save with different churn reduction levels
         </p>
       </div>
@@ -448,21 +444,21 @@ const ComparisonSection = ({ inputs, results }: { inputs: CalculatorInputs; resu
   return (
     <section
       ref={ref}
-      className={`bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 md:p-8 mb-12 transition-all duration-1000 ${
+      className={`bg-shopify-50 rounded-polaris-lg p-6 md:p-8 mb-12 transition-all duration-1000 border border-shopify-200 ${
         isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+      <h2 className="text-2xl md:text-3xl font-semibold text-text mb-6 text-center">
         Put Your Churn Loss in Perspective
       </h2>
       <div className="space-y-4">
         {comparisons.map((comparison, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg p-4 shadow-sm flex items-start space-x-3"
+            className="polaris-card flex items-start space-x-3"
           >
-            <CheckCircleIcon className="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" />
-            <p className="text-gray-700 text-lg">{comparison.text}</p>
+            <CheckCircleIcon className="w-6 h-6 text-shopify-600 flex-shrink-0 mt-0.5" />
+            <p className="text-text text-lg">{comparison.text}</p>
           </div>
         ))}
       </div>
@@ -479,21 +475,21 @@ const CTASection = () => {
   return (
     <section
       ref={ref}
-      className={`bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl p-8 md:p-12 text-center transition-all duration-1000 ${
+      className={`bg-shopify-600 rounded-polaris-lg p-8 md:p-12 text-center transition-all duration-1000 ${
         isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
         Ready to Stop the Bleeding?
       </h2>
-      <p className="text-xl text-indigo-100 mb-8">
+      <p className="text-xl text-shopify-100 mb-8">
         Let's work together to reduce your churn and protect your revenue
       </p>
       <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
-        <button className="w-full md:w-auto bg-white text-indigo-600 font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+        <button className="w-full md:w-auto bg-white text-shopify-700 font-medium px-8 py-4 rounded-polaris shadow-polaris hover:shadow-polaris-md transition-all duration-300">
           Book a Free Churn Reduction Strategy Call
         </button>
-        <button className="w-full md:w-auto bg-transparent text-white font-semibold px-8 py-4 rounded-lg border-2 border-white hover:bg-white hover:text-indigo-600 transition-all duration-300">
+        <button className="w-full md:w-auto bg-transparent text-white font-medium px-8 py-4 rounded-polaris border-2 border-white hover:bg-white hover:text-shopify-700 transition-all duration-300">
           Get Early Access to ChurnGuard (20% Off)
         </button>
       </div>

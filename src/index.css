@@ -2,42 +2,109 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom base styles */
+/* Shopify Polaris-inspired base styles */
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply font-sans antialiased bg-gray-50 text-gray-900;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
+    @apply font-sans antialiased bg-surface-subdued text-text;
+    font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
+    @apply font-semibold text-text;
+  }
+
+  h1 {
+    @apply text-3xl leading-10;
+  }
+
+  h2 {
+    @apply text-2xl leading-8;
+  }
+
+  h3 {
+    @apply text-xl leading-7;
   }
 }
 
-/* Custom components */
+/* Shopify Polaris-inspired components */
 @layer components {
+  /* Button styles */
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-action-primary hover:bg-action-primary-hovered active:bg-action-primary-pressed text-white font-medium py-3 px-6 rounded-polaris shadow-polaris-sm transition-all duration-150 border-0;
   }
   
   .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-surface border border-border hover:bg-surface-hovered active:bg-surface-pressed text-text font-medium py-3 px-6 rounded-polaris shadow-polaris-sm transition-all duration-150;
+  }
+
+  .btn-plain {
+    @apply text-interactive hover:text-interactive-hovered underline font-medium transition-colors duration-150;
   }
   
-  .card {
-    @apply bg-white rounded-lg shadow-md p-6;
+  /* Card styles */
+  .polaris-card {
+    @apply bg-surface rounded-polaris shadow-polaris p-5 border border-border-subdued;
+  }
+
+  .polaris-card-section {
+    @apply py-4 first:pt-0 last:pb-0;
   }
   
-  .input-field {
-    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all;
+  /* Form input styles */
+  .polaris-input {
+    @apply w-full px-3 py-2 border border-border rounded-polaris bg-surface text-text placeholder:text-text-subdued focus:outline-none focus:ring-2 focus:ring-interactive focus:border-interactive transition-all duration-150;
+  }
+
+  .polaris-input:disabled {
+    @apply bg-surface-disabled text-text-disabled cursor-not-allowed;
+  }
+
+  .polaris-input-error {
+    @apply border-critical focus:ring-critical focus:border-critical;
+  }
+
+  .polaris-label {
+    @apply block text-sm font-medium text-text mb-1;
+  }
+
+  /* Badge styles */
+  .polaris-badge {
+    @apply inline-flex items-center px-2 py-1 rounded text-xs font-medium;
+  }
+
+  .polaris-badge-success {
+    @apply bg-success-subdued text-success-text;
+  }
+
+  .polaris-badge-critical {
+    @apply bg-critical-subdued text-critical-text;
+  }
+
+  .polaris-badge-warning {
+    @apply bg-warning-subdued text-warning-text;
+  }
+
+  /* Banner styles */
+  .polaris-banner {
+    @apply rounded-polaris p-4 border-l-4;
+  }
+
+  .polaris-banner-success {
+    @apply bg-success-subdued border-success text-success-text;
+  }
+
+  .polaris-banner-critical {
+    @apply bg-critical-subdued border-critical text-critical-text;
+  }
+
+  .polaris-banner-warning {
+    @apply bg-warning-subdued border-warning text-warning-text;
   }
 }
 

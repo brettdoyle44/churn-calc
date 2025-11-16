@@ -29,25 +29,25 @@ class ErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-          <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
-            <div className="text-red-500 text-5xl mb-4">⚠️</div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+        <div className="min-h-screen bg-surface-subdued flex items-center justify-center p-4">
+          <div className="max-w-md w-full polaris-card text-center">
+            <div className="text-critical text-5xl mb-4">⚠️</div>
+            <h1 className="text-2xl font-semibold text-text mb-2">
               Oops! Something went wrong
             </h1>
-            <p className="text-gray-600 mb-6">
+            <p className="text-text-subdued mb-6">
               We encountered an unexpected error. Don't worry, your data is safe.
             </p>
             {this.state.error && (
-              <div className="bg-gray-100 rounded p-3 mb-6 text-left">
-                <p className="text-sm text-gray-700 font-mono">
+              <div className="bg-surface-subdued rounded-polaris p-3 mb-6 text-left">
+                <p className="text-sm text-text-subdued font-mono">
                   {this.state.error.message}
                 </p>
               </div>
             )}
             <button
               onClick={this.handleStartOver}
-              className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+              className="btn-primary w-full"
             >
               Start Over
             </button>
@@ -64,7 +64,7 @@ function App() {
   return (
     <CalculatorProvider>
       <BrowserRouter>
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-surface-subdued">
           <ErrorBoundary>
             <Routes>
               <Route path="/" element={<CalculatorPage />} />
